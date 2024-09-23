@@ -56,7 +56,7 @@ void setup()
   pinMode(Green, 1);
 }
 
-
+// Set that max brightness is 255 and don't go over it
 void max_brightness()
 {
   if (brightness_red > 255)
@@ -73,6 +73,7 @@ void max_brightness()
   }
 }
 
+// Set that min brightness is 0 and don't go under it, as after that it displays the light
 void min_brightness()
 {
   if (brightness_red < 0)
@@ -89,6 +90,7 @@ void min_brightness()
   }
 }
 
+// Display the colors
 void dispaly_colors()
 {
   max_brightness();
@@ -99,6 +101,9 @@ void dispaly_colors()
   analogWrite(Yellow, brightness_yellow);
   analogWrite(Green, brightness_green);
 }
+
+
+// Determine which button is pressed
 void determenButtonPressed()
 {
   if (digitalRead(Brightness_Up) == 0)
@@ -114,6 +119,8 @@ void determenButtonPressed()
     current_button = Switch_Color;
   }
 }
+
+// Blink the light to know to which color we are switching
 void blink(int LED)
 {
   analogWrite(LED, 255);
@@ -123,6 +130,8 @@ void blink(int LED)
 
 int thirdButtonPressed = 0;
 
+
+// Main logic of the program to determine which button is pressed and what to do with brightness
 void whichButtonPressed(int Button, int LED)
 {
   switch (Button)

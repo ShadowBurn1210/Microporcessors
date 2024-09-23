@@ -12,7 +12,7 @@ void setup()
 void playTone(String input_tone)
 {
 
-
+  // Got note tones from internet and tone documentation
   if (input_tone == "C"){
     tone(Piezo, 261.63, 1000);
   }
@@ -44,15 +44,14 @@ void loop()
 
   if (Serial.available() > 0)
   {
-    // Read the incoming string:
+    // Read the incoming string until user presses enter:
     String input = Serial.readStringUntil('\n');
 
-    // Echo the input back to the Serial Monitor:
+    // Display which note is to be played:
     Serial.print("Note played is: ");
     Serial.println(input);
 
     playTone(input);
 
-    // You can add more code here to handle the input accordingly
   }
 }
